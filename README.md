@@ -6,7 +6,7 @@ No Kubernetes, no YAML nightmares, just code and a few CLI commands.
 
 ```
 my-app/
-├── api/
+├── backend/
 │   ├── index.js
 │   ├── package.json
 │   └── app.yaml
@@ -75,7 +75,7 @@ Here’s a minimal version for our Node.js API:
 
 ```yaml
 runtime: nodejs20
-service: api
+service: backend
 env: standard
 ```
 
@@ -89,9 +89,10 @@ For the frontend, basically the same:
 
 ```yaml
 runtime: nodejs20
-service: frontend
 env: standard
 ```
+
+> Note that we're omitting the service field here because App Engine requires having a "default" service.
 
 ### **Deploying to App Engine**
 
