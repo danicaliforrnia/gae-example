@@ -1,3 +1,15 @@
 runtime: nodejs20
-service: frontend
 env: standard
+handlers:
+  - url: /(.*\.(js|css|json|ico|png|jpg|svg|map))$
+    static_files: dist/\1
+    upload: dist/.*\.(js|css|json|ico|png|jpg|svg|map)$
+    secure: always
+  - url: /
+    static_files: dist/index.html
+    upload: dist/index.html
+    secure: always
+  - url: /.*
+    static_files: dist/index.html
+    upload: dist/index.html
+    secure: always
