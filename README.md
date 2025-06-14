@@ -85,14 +85,24 @@ env: standard
 - `service`: api → This gives the service a name (defaults to “default” if omitted). It becomes part of the deployed URL: `api-dot-YOUR_PROJECT_ID.ey.r.appspot.com`
 - `env`: standard → Use the **Standard Environment**, which supports rapid scaling and quick startup times.
 
-For the frontend, basically the same:
+For the frontend:
 
 ```yaml
 runtime: nodejs20
 env: standard
+handlers:
+  - url: /(.*\..+)$
+    static_files: dist/\1
+    upload: dist/(.*\..+)$
+  - url: /.*
+    static_files: dist/index.html
+    upload: dist/index.html
 ```
 
-> Note that we're omitting the service field here because App Engine requires having a "default" service.
+- Note that we're omitting the `service` field here because App Engine requires having a "default" service.
+- `handlers`: The handlers define how App Engine should respond to incoming requests. It serves them directly from the `dist/` folder (your React app’s build output).
+
+This setup is simple but powerful—it gives you a production-ready deployment of your React app with **zero backend code**.
 
 ### **Deploying to App Engine**
 
