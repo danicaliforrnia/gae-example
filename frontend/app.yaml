@@ -1,15 +1,9 @@
 runtime: nodejs20
 env: standard
 handlers:
-  - url: /(.*\.(js|css|json|ico|png|jpg|svg|map))$
+  - url: /(.*\..+)$
     static_files: dist/\1
-    upload: dist/.*\.(js|css|json|ico|png|jpg|svg|map)$
-    secure: always
-  - url: /
-    static_files: dist/index.html
-    upload: dist/index.html
-    secure: always
+    upload: dist/(.*\..+)$
   - url: /.*
     static_files: dist/index.html
     upload: dist/index.html
-    secure: always
