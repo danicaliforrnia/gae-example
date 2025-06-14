@@ -1,4 +1,4 @@
-# Google App Engine Example
+# Node and Google App Engine Demo
 
 Let’s walk through deploying a simple web app using **Google App Engine Standard**. 
 We’ll build a small Node.js API and a React frontend (you can find the source code in Git). 
@@ -65,7 +65,7 @@ app.listen(PORT, () => {
 });
 ```
 
-### **Understanding app.yaml**
+### **Understanding app.yaml**
 
 Now the real magic—**app.yaml**.
 
